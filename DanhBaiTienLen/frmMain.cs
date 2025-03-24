@@ -86,18 +86,20 @@ namespace DanhBaiTienLen
             // Khởi tạo lại bài
             newGame();
 
-            // Xác định người đánh đầu tiên dựa trên người thắng ván trước
-            if (lastWinner == 1) // Người chơi thắng ván trước
-            {
-                playerNext(); // Người chơi đánh đầu tiên
-            }
-            else
-            {
-                comNext(); // Máy đánh đầu tiên
-            }
+			if (lastWinner == 1)
+			{
+				MessageBox.Show("Ván trước bạn thắng, bạn được đánh trước!");
+				playerNext();
+			}
+			else
+			{
+				MessageBox.Show("Ván trước máy thắng, máy sẽ đánh trước!");
+				comNext();
+			}
 
-            // Bắt đầu chờ báo Sâm
-            StartWaitForSam();
+
+			// Bắt đầu chờ báo Sâm
+			StartWaitForSam();
 
             // Cập nhật giao diện
             UpdateUI();
@@ -565,30 +567,44 @@ namespace DanhBaiTienLen
                 }
             }
         }
-        //btn đánh
-        private void btnGo_Click(object sender, EventArgs e)
-        {
-            listGO = new List<int>();
-            for (int i = 0; i < listPlayer.Count; i++)
-            {
-                if (arrStt[i] == 1) // Nếu lá bài được chọn
-                {
-                    listGO.Add(listPlayer[i]); // Thêm lá bài vào danh sách đánh
-                }
-            }
+		//btn đánh
+		private void btnGo_Click(object sender, EventArgs e)
+		{
+			listGO = new List<int>();
+			for (int i = 0; i < listPlayer.Count; i++)
+			{
+				if (arrStt[i] == 1) // Nếu lá bài được chọn
+				{
+					listGO.Add(listPlayer[i]); // Thêm lá bài vào danh sách đánh
+				}
+			}
 
-            if (isValid(listGO)) // Kiểm tra tính hợp lệ của bộ bài
-            {
-                K(listGO.Count); // Đánh bài
-                comNext(); // Chuyển lượt cho máy
-            }
-            else
-            {
-                MessageBox.Show("Bộ bài không hợp lệ!"); // Thông báo lỗi
-            }
-        }
-        //ktra hợp lệ
-        public bool isValid(List<int> a)
+			if (isValid(listGO)) // Kiểm tra tính hợp lệ của bộ bài
+			{
+				K(listGO.Count); // Đánh bài lên bàn
+
+				// 👉 Kiểm tra chặn sâm ngay sau khi người chơi ra bài
+				if (isSamDeclared && samPlayer == 0)
+				{
+					if (CheckIfComCanBlock(listTable))
+					{
+						MessageBox.Show("Bạn đã bị chặn sâm! Bạn thua!", "Thua cuộc", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						lastWinner = 0; // Máy thắng
+						ResetGame();
+						return;
+					}
+				}
+
+				comNext(); // Chuyển lượt cho máy nếu không bị chặn
+			}
+			else
+			{
+				MessageBox.Show("Bộ bài không hợp lệ!"); // Thông báo lỗi
+			}
+		} // fix
+
+		//ktra hợp lệ
+		public bool isValid(List<int> a)
         {
             if (a.Count == 0)
                 return false;

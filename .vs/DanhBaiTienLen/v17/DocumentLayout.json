@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|d:\\danhbaitienlen\\danhbaitienlen\\danhbaitienlen\\frmbegin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|D:\\DanhBaiTienLen\\DanhBaiTienLen\\danhbaitienlen\\frmbegin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmbegin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -65,8 +65,7 @@
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmBegin.cs [Design]",
               "RelativeToolTip": "DanhBaiTienLen\\frmBegin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T13:23:20.88Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-03-24T13:23:20.88Z"
             },
             {
               "$type": "Document",
@@ -76,7 +75,7 @@
               "RelativeDocumentMoniker": "DanhBaiTienLen\\frmMain.cs",
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs",
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.cs",
-              "ViewState": "AgIAAPYBAAAAAAAAAADwvwECAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAFIDAAAAAAAAAAAswAQFAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T15:45:12.714Z",
               "EditorCaption": ""
@@ -91,8 +90,7 @@
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.Designer.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAgwNkCAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T15:27:21.877Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T15:27:21.877Z"
             },
             {
               "$type": "Document",
@@ -103,8 +101,7 @@
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs [Design]",
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T16:01:02.27Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-27T16:01:02.27Z"
             }
           ]
         }
