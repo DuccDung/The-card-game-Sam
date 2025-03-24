@@ -7,16 +7,12 @@
       "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|D:\\DanhBaiTienLen\\DanhBaiTienLen\\danhbaitienlen\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|D:\\DanhBaiTienLen\\DanhBaiTienLen\\danhbaitienlen\\frmmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|D:\\DanhBaiTienLen\\DanhBaiTienLen\\danhbaitienlen\\frmbegin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmbegin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|D:\\DanhBaiTienLen\\DanhBaiTienLen\\danhbaitienlen\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{727DC36C-0B9F-4A0C-90CD-D430564446A6}|DanhBaiTienLen\\DanhBaiTienLen.csproj|solutionrelative:danhbaitienlen\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,50 +54,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "frmBegin.cs [Design]",
-              "DocumentMoniker": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmBegin.cs",
-              "RelativeDocumentMoniker": "DanhBaiTienLen\\frmBegin.cs",
-              "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmBegin.cs [Design]",
-              "RelativeToolTip": "DanhBaiTienLen\\frmBegin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T13:23:20.88Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "frmMain.cs",
               "DocumentMoniker": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs",
               "RelativeDocumentMoniker": "DanhBaiTienLen\\frmMain.cs",
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs",
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAIA0wKcAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAK8CAAAAAAAAAAAswGQEAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-27T15:45:12.714Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "frmMain.Designer.cs",
               "DocumentMoniker": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.Designer.cs",
               "RelativeDocumentMoniker": "DanhBaiTienLen\\frmMain.Designer.cs",
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.Designer.cs",
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.Designer.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAgwNkCAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwNQCAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T15:27:21.877Z"
+              "WhenOpened": "2025-02-27T15:27:21.877Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmMain.cs [Design]",
               "DocumentMoniker": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs",
               "RelativeDocumentMoniker": "DanhBaiTienLen\\frmMain.cs",
               "ToolTip": "D:\\DanhBaiTienLen\\DanhBaiTienLen\\DanhBaiTienLen\\frmMain.cs [Design]",
               "RelativeToolTip": "DanhBaiTienLen\\frmMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T16:01:02.27Z"
+              "WhenOpened": "2025-02-27T16:01:02.27Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
