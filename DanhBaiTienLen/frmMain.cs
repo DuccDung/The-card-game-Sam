@@ -25,10 +25,12 @@ namespace DanhBaiTienLen
         int samPlayer = -1; // Người hô Sâm (-1: chưa ai hô, 0: người chơi, 1: máy)
         int currentPlayer = 0; // Người chơi hiện tại (0: người chơi, 1: máy)
         int lastWinner = -1; // Người thắng ván trước (-1: chưa có, 0: máy, 1: người chơi)
+		private bool shouldPlayerGoFirst = false;
+		private bool isWaitingForSam = false;
 
- 
-        // Các điểm đặt bài
-        Point[] loc1 = new Point[10] {
+
+		// Các điểm đặt bài
+		Point[] loc1 = new Point[10] {
             new Point(33, 46), new Point(94, 46), new Point(155, 46),
             new Point(216, 46), new Point(277, 46), new Point(337, 46),
             new Point(398, 46), new Point(459, 46), new Point(520, 46),
@@ -56,55 +58,50 @@ namespace DanhBaiTienLen
             tmrCoolDown.Interval = Const.coolDownInterval;
             tmrComCD.Interval = Const.comInterval;
         }
-        public void ResetGame()
-        {
-            // Dừng các timer
-            tmrCoolDown.Stop();
-            tmrComCD.Stop(); // Dừng timer của máy
-            tmrWaitForSam.Stop(); // Dừng timer chờ báo Sâm
+		public void ResetGame()
+		{
+			// Dừng tất cả timer
+			tmrCoolDown.Stop();
+			tmrComCD.Stop();
+			tmrWaitForSam.Stop();
 
-            // Đặt lại các biến
-            listPlayer = new List<int>();
-            listComputer = new List<int>();
-            arrStt = new int[13];
-            listTable = new List<int>();
-            listGO = new List<int>();
-            listComGO = new List<int>();
+			// Đặt lại các biến
+			listPlayer = new List<int>();
+			listComputer = new List<int>();
+			arrStt = new int[13];
+			listTable = new List<int>();
+			listGO = new List<int>();
+			listComGO = new List<int>();
 
-            // Reset các biến liên quan đến thời gian chờ và trạng thái
-            isSamDeclared = false; // Reset trạng thái báo Sâm
-            samPlayer = -1; // -1: chưa ai hô Sâm
-            currentPlayer = 0; // Người chơi hiện tại (0: người chơi, 1: máy)
+			isSamDeclared = false;
+			samPlayer = -1;
+			currentPlayer = 0;
 
-            // Hiển thị lại thanh thời gian chờ
-            lblWaitTime.Visible = true;
-            lblWaitTime.Text = $"Thời gian chờ báo sâm: {waitTime} giây";
+			lblWaitTime.Visible = true;
+			lblWaitTime.Text = $"Thời gian chờ báo sâm: {waitTime} giây";
+			btnBao.Enabled = true;
 
-            // Bật lại nút "Báo Sâm"
-            btnBao.Enabled = true;
+			newGame();
 
-            // Khởi tạo lại bài
-            newGame();
-
+			// 👉 Bỏ đoạn gọi playerNext() hoặc comNext() tại đây
+			// Thay vào đó, chỉ thông báo ai thắng ván trước
 			if (lastWinner == 1)
 			{
-				MessageBox.Show("Ván trước bạn thắng, bạn được đánh trước!");
-				playerNext();
+				shouldPlayerGoFirst = true; // Người chơi sẽ đi trước sau thời gian chờ
+				MessageBox.Show("Ván trước bạn thắng, bạn sẽ được ưu tiên đánh trước sau thời gian chờ báo sâm.");
 			}
 			else
 			{
-				MessageBox.Show("Ván trước máy thắng, máy sẽ đánh trước!");
-				comNext();
+				shouldPlayerGoFirst = false;
+				MessageBox.Show("Ván trước máy thắng, máy sẽ được ưu tiên đánh trước sau thời gian chờ báo sâm.");
 			}
 
 
-			// Bắt đầu chờ báo Sâm
 			StartWaitForSam();
+			UpdateUI();
+		}
 
-            // Cập nhật giao diện
-            UpdateUI();
-        }
-        public void UpdateUI()
+		public void UpdateUI()
         {
             // Đổ ảnh player
             foreach (PictureBox pl in this.pnlPlayer.Controls)
@@ -151,29 +148,27 @@ namespace DanhBaiTienLen
             newGame();
             exception();    //xét ăn trắng
 
-            StartWaitForSam();
+			StartWaitForSam();
         }
-        private void StartWaitForSam()
-        {
-            // Reset thời gian chờ
-            waitTime = 10; // 10 giây
-            lblWaitTime.Text = $"Thời gian chờ báo sâm: {waitTime} giây";
+		private void StartWaitForSam()
+		{
+			waitTime = 10;
+			isWaitingForSam = true; // 👉 Bắt đầu chờ báo sâm
 
-            // Vô hiệu hóa các nút và tương tác của người chơi, trừ nút "Báo"
-            pnlPlayer.Enabled = false; // Vô hiệu hóa panel chứa bài của người chơi
-            btnGo.Enabled = false;     // Vô hiệu hóa nút "Đánh"
-            btnSkip.Enabled = false;   // Vô hiệu hóa nút "Bỏ qua"
+			lblWaitTime.Text = $"Thời gian chờ báo sâm: {waitTime} giây";
 
-            // Bật nút "Báo Sâm" trong thời gian chờ
-            btnBao.Enabled = true;
+			tmrComCD.Stop();
+			tmrCoolDown.Stop();
+			prbCoolDown.Visible = false;
+			pnlButton.Enabled = false;
+			pnlPlayer.Enabled = false;
+			btnBao.Enabled = true;
+			btnBao.Visible = true;
+			tmrWaitForSam.Start();
+		}
 
-            // Dừng timer của máy để đảm bảo máy không đánh bài trong thời gian chờ
-            tmrComCD.Stop();
 
-            // Bắt đầu Timer chờ báo Sâm
-            tmrWaitForSam.Start();
-        }
-        public void newGame()
+		public void newGame()
         {
             tmrCoolDown.Stop();
 
@@ -419,49 +414,44 @@ namespace DanhBaiTienLen
                 arrStt[i] = 0; // Đánh dấu lá bài không được chọn
             }
         }
-        // Xử lý khi người chơi hô Sâm
-        private void tmrWaitForSam_Tick(object sender, EventArgs e)
-        {
-            waitTime--; // Giảm thời gian chờ
-            lblWaitTime.Text = $"Thời gian chờ: {waitTime} giây";
+		// Xử lý khi người chơi hô Sâm
+		private void tmrWaitForSam_Tick(object sender, EventArgs e)
+		{
+			waitTime--; // Giảm thời gian chờ
+			lblWaitTime.Text = $"Thời gian chờ: {waitTime} giây";
 
-            if (waitTime <= 0)
-            {
-                // Dừng Timer chờ
-                tmrWaitForSam.Stop();
+			if (waitTime <= 0)
+			{
+				tmrWaitForSam.Stop();
+				btnBao.Enabled = false;
+				isWaitingForSam = false;  // 👉 Hết thời gian chờ
 
-                // Ẩn thanh thời gian chờ
-                lblWaitTime.Visible = false;
+				pnlPlayer.Enabled = true;
+				btnGo.Enabled = true;
+				btnSkip.Enabled = true;
+				lblWaitTime.Visible = false;
 
-                // Tắt nút "Báo Sâm" khi thời gian chờ kết thúc
-                btnBao.Enabled = false;
+				if (isSamDeclared && samPlayer == 0)
+				{
+					playerNext();
+				}
+				else
+				{
+					if (shouldPlayerGoFirst)
+					{
+						playerNext();
+						shouldPlayerGoFirst = false;
+					}
+					else
+					{
+						comNext();
+					}
+				}
+			}
 
-                // Kích hoạt lại các nút và tương tác của người chơi
-                pnlPlayer.Enabled = true; // Kích hoạt panel chứa bài của người chơi
-                btnGo.Enabled = true;     // Kích hoạt nút "Đánh"
-                btnSkip.Enabled = true;   // Kích hoạt nút "Bỏ qua"
+		}
 
-                // Thông báo hết thời gian chờ
-                if (!isSamDeclared)
-                {
-                    MessageBox.Show("Hết thời gian chờ! Trò chơi bắt đầu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                // Xác định người đánh đầu tiên
-                if (isSamDeclared && samPlayer == 0)
-                {
-                    playerNext(); // Người chơi đã báo Sâm, được đánh đầu tiên
-                }
-                else
-                {
-                    if (lastWinner == 1) // Người chơi thắng ván trước
-                        playerNext(); // Người chơi đánh đầu tiên
-                    else
-                        comNext(); // Máy đánh đầu tiên nếu không ai báo Sâm
-                }
-            }
-        }
-        private void btnBao_Click(object sender, EventArgs e)
+		private void btnBao_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem đã có ai hô Sâm chưa
             if (isSamDeclared)
@@ -809,8 +799,9 @@ namespace DanhBaiTienLen
         }
         public void comNext()   //lượt máy
         {
-      
-            tmrCoolDown.Stop();
+			if (isWaitingForSam)
+				return;
+			tmrCoolDown.Stop();
             //pnlPlayer.Enabled = false;
             //pnlButton.Visible = false;
             prbCoolDown.Visible = false;
@@ -823,8 +814,13 @@ namespace DanhBaiTienLen
         }
         private void tmrComCD_Tick(object sender, EventArgs e)
         {
-            // Kiểm tra xem người chơi đã thắng chưa
-            if (listPlayer.Count == 0)
+			if (isWaitingForSam)
+			{
+				tmrComCD.Stop(); // ✅ Đảm bảo timer máy không chạy khi đang chờ báo sâm
+				return;
+			}
+			// Kiểm tra xem người chơi đã thắng chưa
+			if (listPlayer.Count == 0)
             {
                 tmrComCD.Stop();
                 return; // Nếu người chơi đã thắng, không cho máy đánh
