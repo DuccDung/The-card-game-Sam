@@ -1,0 +1,48 @@
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe.config
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.pdb
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csprojResolveAssemblyReference.cache
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.Properties.Resources.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.GenerateResource.Cache
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.exe
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.pdb
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmMain.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmBegin.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmRule.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.CoreCompileInputs.cache
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe.config
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.pdb
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.AssemblyReference.cache
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmBegin.resources
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmMain.resources
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmRule.resources
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.Properties.Resources.resources
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.GenerateResource.cache
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.CoreCompileInputs.cache
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.exe
+C:\Users\TRUONG\Documents\Zalo Received Files\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.pdb
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe.config
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.pdb
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.AssemblyReference.cache
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmBegin.resources
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmMain.resources
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmRule.resources
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.Properties.Resources.resources
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.GenerateResource.cache
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.CoreCompileInputs.cache
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.exe
+D:\Ki 6\AI\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.pdb
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe.config
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.pdb
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.AssemblyReference.cache
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmBegin.resources
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmMain.resources
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmRule.resources
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.Properties.Resources.resources
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.GenerateResource.cache
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.CoreCompileInputs.cache
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.exe
+D:\DanhBaiTienLen\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.pdb

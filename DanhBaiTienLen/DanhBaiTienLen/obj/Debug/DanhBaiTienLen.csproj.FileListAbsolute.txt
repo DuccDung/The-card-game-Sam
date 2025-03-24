@@ -1,0 +1,12 @@
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe.config
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.exe
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\bin\Debug\DanhBaiTienLen.pdb
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csprojResolveAssemblyReference.cache
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.Properties.Resources.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.GenerateResource.Cache
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.exe
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.pdb
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmMain.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmBegin.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.frmRule.resources
+D:\Documents\Cuối kì KTLT\DanhBaiTienLen\DanhBaiTienLen\obj\Debug\DanhBaiTienLen.csproj.CoreCompileInputs.cache
