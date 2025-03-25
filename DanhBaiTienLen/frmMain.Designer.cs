@@ -41,7 +41,6 @@
 			this.pl6 = new System.Windows.Forms.PictureBox();
 			this.pl8 = new System.Windows.Forms.PictureBox();
 			this.pnlTableCards = new System.Windows.Forms.Panel();
-			this.lblWaitTime = new System.Windows.Forms.Label();
 			this.t10 = new System.Windows.Forms.PictureBox();
 			this.t9 = new System.Windows.Forms.PictureBox();
 			this.t8 = new System.Windows.Forms.PictureBox();
@@ -53,6 +52,7 @@
 			this.t2 = new System.Windows.Forms.PictureBox();
 			this.t1 = new System.Windows.Forms.PictureBox();
 			this.t0 = new System.Windows.Forms.PictureBox();
+			this.lblWaitTime = new System.Windows.Forms.Label();
 			this.c2 = new System.Windows.Forms.PictureBox();
 			this.c10 = new System.Windows.Forms.PictureBox();
 			this.c8 = new System.Windows.Forms.PictureBox();
@@ -71,6 +71,7 @@
 			this.prbCoolDown = new System.Windows.Forms.ProgressBar();
 			this.tmrCoolDown = new System.Windows.Forms.Timer(this.components);
 			this.tmrComCD = new System.Windows.Forms.Timer(this.components);
+			this.btnHuyCho = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pl0)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pl1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pl2)).BeginInit();
@@ -258,16 +259,6 @@
 			this.pnlTableCards.Size = new System.Drawing.Size(724, 447);
 			this.pnlTableCards.TabIndex = 121;
 			// 
-			// lblWaitTime
-			// 
-			this.lblWaitTime.AutoSize = true;
-			this.lblWaitTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblWaitTime.Location = new System.Drawing.Point(260, 356);
-			this.lblWaitTime.Name = "lblWaitTime";
-			this.lblWaitTime.Size = new System.Drawing.Size(173, 25);
-			this.lblWaitTime.TabIndex = 124;
-			this.lblWaitTime.Text = "Thời gian báo sâm";
-			// 
 			// t10
 			// 
 			this.t10.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -410,6 +401,16 @@
 			this.t0.TabIndex = 113;
 			this.t0.TabStop = false;
 			this.t0.Tag = "12";
+			// 
+			// lblWaitTime
+			// 
+			this.lblWaitTime.AutoSize = true;
+			this.lblWaitTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblWaitTime.Location = new System.Drawing.Point(260, 356);
+			this.lblWaitTime.Name = "lblWaitTime";
+			this.lblWaitTime.Size = new System.Drawing.Size(173, 25);
+			this.lblWaitTime.TabIndex = 124;
+			this.lblWaitTime.Text = "Thời gian báo sâm";
 			// 
 			// c2
 			// 
@@ -587,7 +588,7 @@
 			this.btnBao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnBao.ForeColor = System.Drawing.Color.White;
-			this.btnBao.Location = new System.Drawing.Point(1275, 390);
+			this.btnBao.Location = new System.Drawing.Point(1275, 356);
 			this.btnBao.Margin = new System.Windows.Forms.Padding(4);
 			this.btnBao.Name = "btnBao";
 			this.btnBao.Size = new System.Drawing.Size(101, 38);
@@ -615,6 +616,21 @@
 			// 
 			this.tmrComCD.Tick += new System.EventHandler(this.tmrComCD_Tick);
 			// 
+			// btnHuyCho
+			// 
+			this.btnHuyCho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+			this.btnHuyCho.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.btnHuyCho.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnHuyCho.ForeColor = System.Drawing.Color.White;
+			this.btnHuyCho.Location = new System.Drawing.Point(1275, 402);
+			this.btnHuyCho.Margin = new System.Windows.Forms.Padding(4);
+			this.btnHuyCho.Name = "btnHuyCho";
+			this.btnHuyCho.Size = new System.Drawing.Size(101, 38);
+			this.btnHuyCho.TabIndex = 141;
+			this.btnHuyCho.Text = "Hủy ";
+			this.btnHuyCho.UseVisualStyleBackColor = false;
+			this.btnHuyCho.Visible = false;
+			// 
 			// frmMain
 			// 
 			this.AcceptButton = this.btnGo;
@@ -623,6 +639,7 @@
 			this.BackColor = System.Drawing.Color.White;
 			this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.ClientSize = new System.Drawing.Size(1445, 827);
+			this.Controls.Add(this.btnHuyCho);
 			this.Controls.Add(this.btnBao);
 			this.Controls.Add(this.lblWaitTime);
 			this.Controls.Add(this.prbCoolDown);
@@ -684,11 +701,13 @@
 			this.pnlButton.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
+			this.btnHuyCho.Click += new System.EventHandler(this.btnHuyCho_Click);
 
-        }
 
-        #endregion
-        private System.Windows.Forms.PictureBox pl0;
+		}
+
+		#endregion
+		private System.Windows.Forms.PictureBox pl0;
         private System.Windows.Forms.PictureBox pl1;
         private System.Windows.Forms.PictureBox pl2;
         private System.Windows.Forms.PictureBox pl3;
@@ -729,6 +748,7 @@
         private System.Windows.Forms.Timer tmrComCD;
         private System.Windows.Forms.Button btnBao;
         private System.Windows.Forms.Label lblWaitTime;
-    }
+		private System.Windows.Forms.Button btnHuyCho;
+	}
 }
 

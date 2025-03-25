@@ -88,12 +88,10 @@ namespace DanhBaiTienLen
 			if (lastWinner == 1)
 			{
 				shouldPlayerGoFirst = true; // Người chơi sẽ đi trước sau thời gian chờ
-				MessageBox.Show("Ván trước bạn thắng, bạn sẽ được ưu tiên đánh trước sau thời gian chờ báo sâm.");
 			}
 			else
 			{
 				shouldPlayerGoFirst = false;
-				MessageBox.Show("Ván trước máy thắng, máy sẽ được ưu tiên đánh trước sau thời gian chờ báo sâm.");
 			}
 
 
@@ -164,7 +162,35 @@ namespace DanhBaiTienLen
 			pnlPlayer.Enabled = false;
 			btnBao.Enabled = true;
 			btnBao.Visible = true;
+
+			btnHuyCho.Visible = true;
+			btnHuyCho.Enabled = true;
+
 			tmrWaitForSam.Start();
+		}
+		private void btnHuyCho_Click(object sender, EventArgs e)
+		{
+			tmrWaitForSam.Stop();
+			lblWaitTime.Visible = false;
+			btnBao.Enabled = false;
+			btnHuyCho.Enabled = false;
+			btnHuyCho.Visible = false;
+			isWaitingForSam = false;
+
+			pnlPlayer.Enabled = true;
+			btnGo.Enabled = true;
+			btnSkip.Enabled = true;
+
+			// Chuyển lượt ngay sau khi hủy chờ
+			if (shouldPlayerGoFirst)
+			{
+				playerNext();
+				shouldPlayerGoFirst = false;
+			}
+			else
+			{
+				comNext();
+			}
 		}
 
 
@@ -430,6 +456,8 @@ namespace DanhBaiTienLen
 				btnGo.Enabled = true;
 				btnSkip.Enabled = true;
 				lblWaitTime.Visible = false;
+				btnHuyCho.Visible = false;
+				btnHuyCho.Enabled = false;
 
 				if (isSamDeclared && samPlayer == 0)
 				{
@@ -452,48 +480,77 @@ namespace DanhBaiTienLen
 		}
 
 		private void btnBao_Click(object sender, EventArgs e)
-        {
-            // Kiểm tra xem đã có ai hô Sâm chưa
-            if (isSamDeclared)
-            {
-                MessageBox.Show("Bạn đã hô Sâm rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+		{
+			// Kiểm tra xem đã có ai hô Sâm chưa
+			if (isSamDeclared)
+			{
+				MessageBox.Show("Bạn đã hô Sâm rồi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				btnHuyCho.Visible = false;
+				btnHuyCho.Enabled = false;
+				return;
+			}
+		
 
-            // Dừng Timer chờ
-            tmrWaitForSam.Stop();
+			// Dừng Timer chờ
+			tmrWaitForSam.Stop();
+			btnHuyCho.Visible = false;
+			btnHuyCho.Enabled = false;
 
-            // Ẩn thanh thời gian chờ
-            lblWaitTime.Visible = false;
+			// Ẩn thanh thời gian chờ
+			lblWaitTime.Visible = false;
 
-            // Tắt nút "Báo Sâm" khi người chơi báo Sâm
-            btnBao.Enabled = false;
+			// Tắt nút "Báo Sâm" khi người chơi báo Sâm
+			btnBao.Enabled = false;
 
-            // Đánh dấu là bạn đã hô Sâm
-            isSamDeclared = true;
-            samPlayer = 0; // 0 là người chơi (bạn)
+			// Đánh dấu là bạn đã hô Sâm
+			isSamDeclared = true;
+			samPlayer = 0; // 0 là người chơi (bạn)
 
-            // Kiểm tra xem máy có chặn được bài của người chơi không
-            if (CheckIfComCanBlock(listPlayer))
-            {
-                MessageBox.Show("Máy đã chặn được bài của bạn! Bạn thua!", "Thua cuộc", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                lastWinner = 0; // Máy thắng
-                ResetGame(); // Reset game nếu máy chặn được
-                return;
-            }
+			// Kiểm tra xem máy có chặn được bài của người chơi không
+			if (CheckIfComCanBlock(listPlayer))
+			{
+				// Xác định bài chặn của máy
+				listComGO = new List<int>();
+				int playerHighest = getRank(listPlayer.Last());
+				foreach (var card in listComputer)
+				{
+					if (getRank(card) > playerHighest)
+					{
+						listComGO.Add(card);
+						break; // lấy lá bài lớn đầu tiên đủ để chặn
+					}
+				}
 
-            // Kích hoạt lại các nút và tương tác của người chơi
-            pnlPlayer.Enabled = true; // Kích hoạt panel chứa bài của người chơi
-            btnGo.Enabled = true;     // Kích hoạt nút "Đánh"
-            btnSkip.Enabled = true;   // Kích hoạt nút "Bỏ qua"
+				// Máy đánh ra bài chặn
+				KK(listComGO);
 
-            // Thông báo bạn đã hô Sâm
-            MessageBox.Show("Bạn đã hô Sâm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				// Xuất dialog thông báo & hỏi người chơi có chơi tiếp không
+				var result = MessageBox.Show("Máy đã chặn được bài của bạn! Bạn thua!\nBạn có muốn chơi ván mới không?",
+											 "Máy chặn thành công",
+											 MessageBoxButtons.YesNo,
+											 MessageBoxIcon.Information);
+				if (result == DialogResult.Yes)
+				{
+					lastWinner = 0; // Máy thắng
+					ResetGame(); // Bắt đầu ván mới
+				}
 
-            // Bạn được đánh đầu tiên sau khi hô Sâm
-            playerNext();
-        }
-        private bool CheckIfComCanBlock(List<int> playerHand)
+				return;
+			}
+
+			// Nếu máy không chặn được
+			pnlPlayer.Enabled = true; // Kích hoạt panel chứa bài của người chơi
+			btnGo.Enabled = true;     // Kích hoạt nút "Đánh"
+			btnSkip.Enabled = true;   // Kích hoạt nút "Bỏ qua"
+
+			// Thông báo bạn đã hô Sâm
+			MessageBox.Show("Bạn đã hô Sâm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+			// Bạn được đánh đầu tiên sau khi hô Sâm
+			playerNext();
+		}
+
+		private bool CheckIfComCanBlock(List<int> playerHand)
         {
             // Kiểm tra xem máy có bài mạnh hơn để chặn không
             foreach (int card in listComputer)
@@ -504,7 +561,7 @@ namespace DanhBaiTienLen
                 }
             }
             return false; // Máy không có bài mạnh hơn để chặn
-        }
+        } 
 
         public void HandleSamPlay()
         {
@@ -573,17 +630,40 @@ namespace DanhBaiTienLen
 			{
 				K(listGO.Count); // Đánh bài lên bàn
 
-				// 👉 Kiểm tra chặn sâm ngay sau khi người chơi ra bài
+				// Kiểm tra chặn sâm ngay sau khi người chơi ra bài
 				if (isSamDeclared && samPlayer == 0)
 				{
 					if (CheckIfComCanBlock(listTable))
 					{
-						MessageBox.Show("Bạn đã bị chặn sâm! Bạn thua!", "Thua cuộc", MessageBoxButtons.OK, MessageBoxIcon.Information);
-						lastWinner = 0; // Máy thắng
-						ResetGame();
+						// Tìm bài chặn của máy
+						listComGO = new List<int>();
+						int playerHighest = getRank(listTable.Last());
+						foreach (var card in listComputer)
+						{
+							if (getRank(card) > playerHighest)
+							{
+								listComGO.Add(card); // Máy chặn bằng lá lớn hơn
+								break;
+							}
+						}
+
+						// In bài chặn ra bàn
+						KK(listComGO);
+
+						// Thông báo sau khi chặn
+						var result = MessageBox.Show("Máy đã chặn Sâm của bạn! Bạn thua.\nBạn có muốn chơi ván mới không?",
+													 "Máy chặn Sâm thành công!",
+													 MessageBoxButtons.YesNo,
+													 MessageBoxIcon.Information);
+						if (result == DialogResult.Yes)
+						{
+							lastWinner = 0;
+							ResetGame();
+						}
 						return;
 					}
 				}
+
 
 				comNext(); // Chuyển lượt cho máy nếu không bị chặn
 			}
