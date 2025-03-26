@@ -506,37 +506,6 @@ namespace DanhBaiTienLen
 			isSamDeclared = true;
 			samPlayer = 0; // 0 là người chơi (bạn)
 
-			// Kiểm tra xem máy có chặn được bài của người chơi không
-			if (CheckIfComCanBlock(listPlayer))
-			{
-				// Xác định bài chặn của máy
-				listComGO = new List<int>();
-				int playerHighest = getRank(listPlayer.Last());
-				foreach (var card in listComputer)
-				{
-					if (getRank(card) > playerHighest)
-					{
-						listComGO.Add(card);
-						break; // lấy lá bài lớn đầu tiên đủ để chặn
-					}
-				}
-
-				// Máy đánh ra bài chặn
-				KK(listComGO);
-
-				// Xuất dialog thông báo & hỏi người chơi có chơi tiếp không
-				var result = MessageBox.Show("Máy đã chặn được bài của bạn! Bạn thua!\nBạn có muốn chơi ván mới không?",
-											 "Máy chặn thành công",
-											 MessageBoxButtons.YesNo,
-											 MessageBoxIcon.Information);
-				if (result == DialogResult.Yes)
-				{
-					lastWinner = 0; // Máy thắng
-					ResetGame(); // Bắt đầu ván mới
-				}
-
-				return;
-			}
 
 			// Nếu máy không chặn được
 			pnlPlayer.Enabled = true; // Kích hoạt panel chứa bài của người chơi
@@ -630,31 +599,24 @@ namespace DanhBaiTienLen
 			{
 				K(listGO.Count); // Đánh bài lên bàn
 
-				// Kiểm tra chặn sâm ngay sau khi người chơi ra bài
+				// Kiểm tra chặn Sâm ngay sau khi người chơi ra bài
 				if (isSamDeclared && samPlayer == 0)
 				{
-					if (CheckIfComCanBlock(listTable))
-					{
-						// Tìm bài chặn của máy
-						listComGO = new List<int>();
-						int playerHighest = getRank(listTable.Last());
-						foreach (var card in listComputer)
-						{
-							if (getRank(card) > playerHighest)
-							{
-								listComGO.Add(card); // Máy chặn bằng lá lớn hơn
-								break;
-							}
-						}
+					// Gọi ssj() để máy đánh và chặn nếu có thể
+					listComGO = new List<int>();
+					ssj(); // Máy đánh bài qua ssj()
 
+					// Kiểm tra nếu máy chặn được Sâm
+					if (listComGO.Count > 0) // Nếu máy có bài đánh ra
+					{
 						// In bài chặn ra bàn
 						KK(listComGO);
 
 						// Thông báo sau khi chặn
 						var result = MessageBox.Show("Máy đã chặn Sâm của bạn! Bạn thua.\nBạn có muốn chơi ván mới không?",
-													 "Máy chặn Sâm thành công!",
-													 MessageBoxButtons.YesNo,
-													 MessageBoxIcon.Information);
+														"Máy chặn Sâm thành công!",
+														MessageBoxButtons.YesNo,
+														MessageBoxIcon.Information);
 						if (result == DialogResult.Yes)
 						{
 							lastWinner = 0;
@@ -664,14 +626,15 @@ namespace DanhBaiTienLen
 					}
 				}
 
-
-				comNext(); // Chuyển lượt cho máy nếu không bị chặn
+				// Nếu không bị chặn, chuyển lượt cho máy
+				comNext();
 			}
 			else
 			{
 				MessageBox.Show("Bộ bài không hợp lệ!"); // Thông báo lỗi
 			}
-		} // fix
+		}
+
 
 		//ktra hợp lệ
 		public bool isValid(List<int> a)
@@ -786,7 +749,11 @@ namespace DanhBaiTienLen
 
             for (int i = 0; i < l.Count - 1; i++)
             {
-                if (getRank(l[i + 1]) != getRank(l[i]) + 1) // Kiểm tra dãy liên tiếp
+				// Không cho phép sảnh chứa quân 2 ở giữa
+				if (getRank(l[i]) == 12 || getRank(l[i + 1]) == 12)
+					return false;
+
+				if (getRank(l[i + 1]) != getRank(l[i]) + 1) // Kiểm tra dãy liên tiếp
                     return false;
             }
             return true;
@@ -982,29 +949,40 @@ namespace DanhBaiTienLen
                         break;
 
                     case 3: // Đánh sám cô hoặc sảnh 3 lá
-                        for (int i = 0; i < listComputer.Count - 2; i++)
-                        {
-                            if (getRank(listComputer[i]) == getRank(listComputer[i + 1]) && // Kiểm tra sám cô
-                                getRank(listComputer[i]) == getRank(listComputer[i + 2]) &&
-                                getRank(listComputer[i]) > getRank(listTable[0])) // So sánh giá trị
-                            {
-                                listComGO.Add(listComputer[i]);
-                                listComGO.Add(listComputer[i + 1]);
-                                listComGO.Add(listComputer[i + 2]);
-                                KK(listComGO);
-                                return;
-                            }
-                            else if (isContinuous(listComputer.GetRange(i, 3))) // Kiểm tra sảnh 3 lá
-                            {
-                                listComGO.Add(listComputer[i]);
-                                listComGO.Add(listComputer[i + 1]);
-                                listComGO.Add(listComputer[i + 2]);
-                                KK(listComGO);
-                                return;
-                            }
-                        }
-                        boqua(); // Bỏ qua nếu không có sám cô hoặc sảnh lớn hơn
-                        break;
+						if (listTable.Count == 3)
+						{
+							bool isTableSamCo = isSameRank(listTable); // Kiểm tra xem bàn là sám cô hay sảnh
+							bool isTableSanh = isContinuous(listTable);
+
+							for (int i = 0; i < listComputer.Count - 2; i++)
+							{
+								if (isTableSamCo &&
+									getRank(listComputer[i]) == getRank(listComputer[i + 1]) &&
+									getRank(listComputer[i]) == getRank(listComputer[i + 2]) &&
+									getRank(listComputer[i]) > getRank(listTable[0]))
+								{
+									listComGO.Add(listComputer[i]);
+									listComGO.Add(listComputer[i + 1]);
+									listComGO.Add(listComputer[i + 2]);
+									KK(listComGO);
+									return;
+								}
+								else if (isTableSanh &&
+										 isContinuous(listComputer.GetRange(i, 3)) &&
+										 getRank(listComputer[i + 2]) > getRank(listTable.Last()))
+								{
+									listComGO.Add(listComputer[i]);
+									listComGO.Add(listComputer[i + 1]);
+									listComGO.Add(listComputer[i + 2]);
+									KK(listComGO);
+									return;
+								}
+							}
+							boqua();
+							return;
+						}
+
+						break;
 
                     case 4: // Đánh tứ quý hoặc sảnh 4 lá
                         for (int i = 0; i < listComputer.Count - 3; i++)
@@ -1021,7 +999,7 @@ namespace DanhBaiTienLen
                                 KK(listComGO);
                                 return;
                             }
-                            else if (isContinuous(listComputer.GetRange(i, 4))) // Kiểm tra sảnh 4 lá
+                            else if (isContinuous(listComputer.GetRange(i, 4)) && getRank(listComputer[i + 3]) > getRank(listTable.Last())) // Kiểm tra sảnh 4 lá
                             {
                                 listComGO.Add(listComputer[i]);
                                 listComGO.Add(listComputer[i + 1]);
